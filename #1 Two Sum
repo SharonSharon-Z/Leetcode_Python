@@ -1,0 +1,21 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        """
+        #1 Brute forch method:
+            double for loop
+        #2 hash table
+        
+        """
+        table = {}
+        
+        for i in range(len(nums)):
+            n = target - nums[i]
+            if n not in table:
+                table[nums[i]] = i
+            else:
+                return [table[n],i]
