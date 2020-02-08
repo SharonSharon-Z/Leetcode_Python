@@ -1,0 +1,26 @@
+class Solution(object):
+    def countAndSay(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        def next_num(num):
+            result = ''
+            count = 0
+            number = num[0]
+            
+            for char in num:
+                if char == number:
+                    count += 1
+                else:
+                    result = result + str(count) + number
+                    count = 1
+                    number = char
+            result = result + str(count) + number
+            return result
+        
+        num = '1'
+        
+        for i in range(n-1):
+            num = next_num(num)
+            
