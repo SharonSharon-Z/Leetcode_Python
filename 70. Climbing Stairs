@@ -1,0 +1,23 @@
+# Dynamic Programming + Recursive
+def climbStairs(self, n):
+    if n == 1:
+        return 1
+    if n == 2:
+        return 2
+    return self.climbStairs(n-1)+self.climbStairs(n-2)
+
+# Dynamic Programming + Recursive + Memorization
+def __init__(self):
+    self.dic = {1:1, 2:2}
+    
+def climbStairs(self, n):
+    if n not in self.dic:
+        self.dic[n] = self.climbStairs(n-1) + self.climbStairs(n-2)
+    return self.dic[n]
+    
+# Dynamic Programming + Iteration
+def climbStairs(self, n):
+    table = {1:1, 2:2}
+    for i in range(3, n+ 1):
+        table[i] = table[i-1] + table[i-2]
+    return table[n]
