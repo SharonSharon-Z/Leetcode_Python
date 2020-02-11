@@ -4,6 +4,8 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        
+        # HashTable
         table = {}
         for num in nums:
             if num not in table:
@@ -14,3 +16,5 @@ class Solution(object):
         for item in table:
             if table[item] == 1:
                 return item
+                
+        # Bit Manipulation
