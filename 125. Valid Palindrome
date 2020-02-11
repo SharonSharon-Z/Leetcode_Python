@@ -1,0 +1,25 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        # method 1
+        if not s:
+            return True
+        
+        new = ''
+        for char in s.lower():
+            if char.isalnum():
+                new += char
+                
+        lt = 0
+        rt = len(new)-1
+        
+        while lt < rt:
+            if new[lt] == new[rt]:
+                lt += 1
+                rt -= 1
+            else:
+                return False
+        return True
