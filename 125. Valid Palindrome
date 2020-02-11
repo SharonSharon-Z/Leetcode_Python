@@ -23,3 +23,25 @@ class Solution(object):
             else:
                 return False
         return True
+
+
+        # method 2
+        if not s:
+            return True
+        
+        lt = 0
+        rt = len(s)-1
+        
+        while lt <= rt:
+            if s[lt].lower() == s[rt].lower():
+                lt += 1
+                rt -= 1
+            else:
+                if s[lt].isalnum() and s[rt].isalnum():
+                    return False
+                if not s[lt].isalnum():
+                    lt += 1
+                if not s[rt].isalnum():
+                    rt -= 1
+        return True
+                
