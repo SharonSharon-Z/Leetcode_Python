@@ -1,0 +1,17 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        table = {}
+        limit = len(nums) / 2
+        for num in nums:
+            if num in table:
+                table[num] += 1
+            else:
+                table[num] = 1
+                
+            if table[num] > limit:
+                return num
+        
