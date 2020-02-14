@@ -1,0 +1,17 @@
+class Solution(object):
+    def countPrimes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n <= 2:
+            return 0
+        
+        primelist = [1] * n
+        primelist[0], primelist[1]= 0, 0
+        
+        for i in range(2, int(n ** 0.5) + 1):
+            if primelist[i] == 1:
+                primelist[i*i:n:i] = [0] * len(primelist[i*i:n:i])
+                
+        return sum(primelist)
