@@ -1,0 +1,20 @@
+class Solution(object):
+    def isHappy(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        lst = []
+        
+        while True:
+            if n == 1:
+                return True
+            
+            if str(n) in lst:
+                return False
+            
+            strnum=str(n)
+            lst.append(strnum)
+            n = 0
+            for char in strnum:
+                n = n + int(char) ** 2
