@@ -1,0 +1,31 @@
+class Solution(object):
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # first try
+        if not nums:
+            return 0
+        
+        if len(nums) == 1:
+            return nums[0]
+        
+        prev = 0
+        profit = nums[0]
+        
+        for i in range(0, len(nums)):
+            
+            profit, prev = max(profit, nums[i] + prev), profit
+        
+        return profit
+        
+        # concise version
+        prev = 0
+        profit = 0
+        
+        for i in nums:
+            
+            profit, prev = max(profit, i + prev), profit
+        
+        return profit
