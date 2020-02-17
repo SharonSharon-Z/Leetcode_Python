@@ -1,0 +1,22 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        table = {}
+        for num in nums:
+            if num not in table:
+                table[num] = 1
+            else:
+                table[num] += 1
+        
+        kcount = sorted(table.values(), reverse = True)[k-1]
+        
+        lst = []
+        for item in table:
+            if table[item] >= kcount:
+                lst.append(item)
+                
+        return lst
