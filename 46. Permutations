@@ -4,8 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-    
-        
+        # method1
         if len(nums) <= 1:
             return [nums]
         
@@ -14,7 +13,22 @@ class Solution(object):
         result = []
         for perm in perms:
             for i in range(len(perm) + 1):
-                result.append(perm[:i] + [char] + perm[i:])
-                
-                
+                result.append(perm[:i] + [char] + perm[i:])     
         return result
+        
+    # method2
+    def permute(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        result = []
+        self.helper(nums, [], result)
+        return result
+    
+    def helper(self, nums, cur, result):
+        if not nums:
+            result.append(cur)
+        
+        for i in range(len(nums)):
+            self.helper(nums[:i]+nums[i+1:], cur+[nums[i]], result)
