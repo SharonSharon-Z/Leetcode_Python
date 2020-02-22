@@ -6,10 +6,11 @@ class Solution(object):
         """
         # backtracking
         result= []
-        self.helper(nums,result,[],0)
+        self.helper(nums, 0, [], result)
         return result
         
-    def helper(self, nums, result, cur, index):
+    def helper(self, nums, index, cur, result):
+        print(cur)
         result.append(cur)
-        for i in range(index,len(nums)):
-            self.helper(nums,result,cur + [nums[i]],i + 1)
+        for i in range(index, len(nums)):
+            self.helper(nums, i + 1, cur+[nums[i]], result)
