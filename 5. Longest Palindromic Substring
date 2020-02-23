@@ -1,0 +1,21 @@
+###########Brute Force
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        sp = 0
+        maxlen = 0
+        result = ''
+        
+        while sp + maxlen < len(s):
+            
+            for i in range(sp+maxlen, len(s)):
+                if s[sp:i+1] == s[sp:i+1][::-1]:
+                    result = s[sp:i+1]
+                    
+            maxlen = len(result)
+            sp += 1
+        
+        return result
