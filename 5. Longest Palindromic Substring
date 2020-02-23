@@ -5,6 +5,7 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
+# method 1 slow
         sp = 0
         maxlen = 0
         result = ''
@@ -18,4 +19,15 @@ class Solution(object):
             maxlen = len(result)
             sp += 1
         
+        return result
+# method 2 slow
+        sp = 0
+        maxlen = 0
+        result = ''
+        while maxlen < len(s):
+            for i in range(0,len(s)-maxlen):
+                if s[i:i+1+maxlen] == s[i:i+1+maxlen][::-1]:
+                    result = s[i:i+1+maxlen]
+                    break
+            maxlen += 1
         return result
