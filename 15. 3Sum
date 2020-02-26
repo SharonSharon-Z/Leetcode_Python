@@ -1,0 +1,17 @@
+# SOLUTION 1 => LTE
+class Solution(object):
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        
+        nums.sort()  # [-4,-1,-1,0,1,2]             
+        result = []
+        for h in range(len(nums)):
+            for i in range(h+1,len(nums)):
+                for j in range(i+1,len(nums)):
+                    if nums[i] + nums[j] == -nums[h] and [nums[h],nums[i],nums[j]] not in result:
+                        result.append([nums[h],nums[i],nums[j]])
+            
+        return result
