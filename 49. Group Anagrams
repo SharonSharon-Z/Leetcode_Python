@@ -1,0 +1,15 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        
+        table = {}
+        
+        for word in strs:
+            w=''.join(sorted(list(word)))
+            
+            if w not in table:
+                
+                table[w] = [word]
+            else:
+                table[w] += [word]
+        
+        return table.values()
