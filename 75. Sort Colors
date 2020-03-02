@@ -4,6 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
+# Two_Pass
         table = {0:0,1:0,2:0}
         for num in nums:
             table[num] += 1
@@ -15,3 +16,20 @@ class Solution(object):
             nums[i] = 1
         for i in range(table[0] + table[1], table[0] + table[1] + table[2]):
             nums[i] = 2
+
+# One_Pass
+        p0 = 0
+        p2 = len(nums) - 1
+        p1 = 0
+        while p1 <= p2:
+            # for i in range(len(nums)):
+                if nums[p1] == 0:
+                    nums[p0], nums[p1] = nums[p1],nums[p0]
+                    p0 += 1
+                    p1 += 1
+                elif nums[p1] == 1:
+                    p1 += 1
+                    
+                else:
+                    nums[p1],nums[p2] = nums[p2], nums[p1]
+                    p2 -= 1
