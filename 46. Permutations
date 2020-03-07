@@ -1,9 +1,25 @@
 class Solution(object):
-    def permute(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
+    # Traditional Backtracking
+    def permute(self, nums): 
+        result = []
+        item = []
+        n = len(nums)
+        curindex = 0
+        self.permuting(nums, n, curindex, item, result)
+        return result
+        
+    def permuting(self, nums,n,curindex,item,result): # n = len(nums)
+        if curindex == n:
+            result.append(item[:])
+            return
+        
+        for num in nums:
+            item.append(num)
+            if num not in item[:-1]:
+                self.permuting(nums,n,curindex + 1, item, result)
+            item.pop()
+            
+            
         # method1
         if len(nums) <= 1:
             return [nums]
