@@ -1,3 +1,30 @@
+## Traditional solution:
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        result = []
+        self.generating('()',n,n,'',result)
+        return result
+    
+    def generating(self,selection,lt,rt,item,result):
+        if lt == rt == 0:
+            result.append(item[:])
+            return
+        for p in selection:
+            item += p
+            if lt <= rt and 0 <=lt:
+                if p == '(':
+                    self.generating(selection,lt-1,rt,item,result)
+                else:
+                    self.generating(selection,lt,rt-1,item,result)
+            
+            item=item[:-1]
+
+
+## Method
 class Solution(object):
     def generateParenthesis(self, n):
         """
