@@ -1,3 +1,24 @@
+## Method 1
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        
+        result= []
+        self.generate(nums, 0,[], result)
+        return result
+      
+    def generate(self,nums,starting,item,result):
+        result.append(item[:])
+        for i in range(len(nums)): 
+            item.append(nums[i])
+            if i >= starting:
+                self.generate(nums,i+1,item,result)
+            item.pop()
+
+##
 class Solution(object):
     def subsets(self, nums):
         """
